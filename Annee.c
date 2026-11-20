@@ -10,7 +10,7 @@ void creationTableau(DonneesAnnees tab[], int TAILLE){
 }
 
 
-void afficherMenu(){
+void afficherMenuAnnee(){
   do{
     printf("Saisir une annee a consulter (2005-2024) :\n");
     scanf(" %d", &
