@@ -12,6 +12,18 @@ Victime* recup_ligne(char* nom_fichier, int annee, victime *victime){
         fclose(f);
         exit(2);
     }
+
+	if (fscanf(f, "collision id;%d\n\n", &victime.idCollision) != 1) {
+        printf("Erreur de format : collision id introuvable\n");
+        fclose(f);
+        exit(3);
+    }
+
+	if (fscanf(f, "vehicule id;%d\n\n", &victime.idVehicule) != 1) {
+        printf("Erreur de format : vehicule id introuvable\n");
+        fclose(f);
+        exit(4);
+    }
 	fclose(f);
 	return victime;
 	
@@ -21,8 +33,8 @@ Victime creer_victime(){
 	Victime nouv;
 	nouv.annee = 0;
 	nouv.idCollision = 0;
-	nouv.localisation = 0;
 	nouv.idVehicule = 0;
+	nouv.localisation = 0;
 	nouv.typeUtilisateur = 0;
 	nouv.gravite = 0;
 	nouv.naissance = 0;
