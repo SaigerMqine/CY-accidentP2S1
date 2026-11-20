@@ -1,3 +1,5 @@
+#define TAILLE 20
+
 typedef struct{
   int indemnes;
   int accidents;
