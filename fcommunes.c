@@ -70,9 +70,11 @@ Victime creer_victime(){
 	nouv.localisation = 0;
 	nouv.typeUtilisateur = 0;
 	nouv.gravite = 0;
+	nouv.genre = 0;
 	nouv.naissance = 0;
 	nouv.typeTrajet = 0;
 	nouv.age = 0;
+	return nouv;
 }
 
 int verifint(){            
