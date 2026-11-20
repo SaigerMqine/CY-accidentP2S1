@@ -1,4 +1,4 @@
-Victime recup_ligne(char* nom_fichier, int annee){
+Victime recup_ligne(char* nom_fichier){
     FILE *f = fopen(nom_fichier, "r");
     if (f == NULL) {
         printf("Erreur : Impossible d'ouvrir le fichier");
@@ -6,66 +6,23 @@ Victime recup_ligne(char* nom_fichier, int annee){
     }
 	
 	Victime victime = creer_victime();
-	
-	if (fscanf(f, "year;%d\n\n", &victime.annee) != 1){
-        printf("Erreur de format : année introuvable\n");
-        fclose(f);
-        exit(2);
-    }
 
-	if (fscanf(f, "collision id;%d\n\n", &victime.idCollision) != 1){
-        printf("Erreur de format : collision id introuvable\n");
-        fclose(f);
-        exit(3);
-    }
+	char ligne[512];
+	if(fgets(ligne sizeof(ligne), ) == NULL){
+		printf("Erreur: fichier vide\n);
+		fclose(f);
+		exit(10);
+	}
 
-	if (fscanf(f, "vehicule id;%d\n\n", &victime.idVehicule) != 1){
-        printf("Erreur de format : vehicule id introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-	
-	if (fscanf(f, "location;%d\n\n", &victime.localisation) != 1){
-        printf("Erreur de format : localisation introuvable\n");
-        fclose(f);
-        exit(4);
-    }
+	while(fgets(ligne, sizeof(ligne), f) != NULL){
 
-	if (fscanf(f, "user type;%d\n\n", &victime.typeUtilisateur) != 1){
-        printf("Erreur de format : type d'utilisateur introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-
-	if (fscanf(f, "severity;%d\n\n", &victime.gravite) != 1){
-        printf("Erreur de format : gravite introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-
-	if (fscanf(f, "gender;%d\n\n", &victime.genre) != 1){
-        printf("Erreur de format : genre introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-
-	if (fscanf(f, "birth year;%d\n\n", &victime.naissance) != 1){
-        printf("Erreur de format : naissance introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-
-	if (fscanf(f, "purpose;%d\n\n", &victime.typeTrajet) != 1){
-        printf("Erreur de format : type de trajet introuvable\n");
-        fclose(f);
-        exit(4);
-    }
-
-	victime.age = victime.annee - victime.naissance;
-	fclose(f);
-	printf("Victime chargée avec succès");
-	return victime;
-	
+		if(scanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) == 9){
+			victime.age = victime.annee - victime.naissance;
+			fclose(f);
+			printf("Victime chargée avec succès");
+			return victime;
+		}
+	}	
 }
 
 Victime creer_victime(){
