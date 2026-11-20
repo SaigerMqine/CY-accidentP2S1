@@ -1,11 +1,25 @@
-int lire_ligne(File *f, victime *victime){
-    FILE *f = fopen(f, "r");
+int lire_ligne(char nom_fichier, int annee, victime *victime){
+    FILE *f = fopen(nom_fichier, "r");
     if (f == NULL) {
         printf("Erreur : Impossible d'ouvrir le fichier");
         exit(1);
     }
+	
 }
 
+Victime creer_victime(){
+	Victime nouv;
+	nouv.annee = 0;
+	nouv.idCollision = 0;
+	nouv.localisation = 0;
+	nouv.idVehicule = 0;
+	nouv.typeUtilisateur = 0;
+	nouv.gravite = 0;
+	nouv.naissance = 0
+	nouv.typeTrajet = 0
+	nouv.age = 0
+	
+}
 
 int verifint(){            
 	//verifie les int
