@@ -43,6 +43,12 @@ Victime recup_ligne(char* nom_fichier, int annee){
         exit(4);
     }
 
+	if (fscanf(f, "gender;%d\n\n", &victime.genre) != 1){
+        printf("Erreur de format : genre introuvable\n");
+        fclose(f);
+        exit(4);
+    }
+
 	if (fscanf(f, "birth year;%d\n\n", &victime.naissance) != 1){
         printf("Erreur de format : naissance introuvable\n");
         fclose(f);
