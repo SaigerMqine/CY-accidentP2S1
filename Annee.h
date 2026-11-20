@@ -8,7 +8,9 @@ typedef struct{
   int legers;
 }DonneesAnnee;
 
-void afficherMenuAnnee();
+void creationTableau();
+
+
 
 
 
