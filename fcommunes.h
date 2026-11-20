@@ -6,16 +6,18 @@ typedef struct victime{
   int typeUtilisateur;
   int gravite;
   int genre;
-  int anniversaire;
+  int naissance;
   int typeTrajet;
+  int age;
 }
 
 
 
+int lire_ligne(File *file, victime *victime);
+void messageErreur();
 
+//Affichage commun//
 
-
-calculAge()
 
   
 
