@@ -1,10 +1,20 @@
-int lire_ligne(char nom_fichier, int annee, victime *victime){
+Victime* recup_ligne(char nom_fichier, int annee, victime *victime){
     FILE *f = fopen(nom_fichier, "r");
     if (f == NULL) {
         printf("Erreur : Impossible d'ouvrir le fichier");
         exit(1);
     }
 	
+	Victime victime = creer_victime();
+	
+	if (fscanf(f, "year:%d\n\n", &victime.annee) != 1) {
+        printf("Erreur de format : année introuvable\n");
+        fclose(f);
+        exit(2);
+    }
+	
+	return victime;
+	fclose(f);
 }
 
 Victime creer_victime(){
@@ -18,7 +28,6 @@ Victime creer_victime(){
 	nouv.naissance = 0
 	nouv.typeTrajet = 0
 	nouv.age = 0
-	
 }
 
 int verifint(){            
