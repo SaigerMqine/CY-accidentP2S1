@@ -1,4 +1,4 @@
-typedef struct victime{
+typedef struct{
   int annee;  
   int idCollision;
   int idVehicule;
@@ -9,7 +9,7 @@ typedef struct victime{
   int naissance;
   int typeTrajet;
   int age;
-}
+}Victime;
 
 
 
