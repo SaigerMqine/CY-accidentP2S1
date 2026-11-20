@@ -14,7 +14,7 @@ typedef struct victime{
 
 
 int lire_ligne(File *file, victime *victime);
-void messageErreur();
+int verifint();
 
 //Affichage commun//
 
