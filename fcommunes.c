@@ -1,4 +1,4 @@
-Victime* recup_ligne(char nom_fichier, int annee, victime *victime){
+Victime* recup_ligne(char* nom_fichier, int annee, victime *victime){
     FILE *f = fopen(nom_fichier, "r");
     if (f == NULL) {
         printf("Erreur : Impossible d'ouvrir le fichier");
@@ -7,14 +7,14 @@ Victime* recup_ligne(char nom_fichier, int annee, victime *victime){
 	
 	Victime victime = creer_victime();
 	
-	if (fscanf(f, "year:%d\n\n", &victime.annee) != 1) {
+	if (fscanf(f, "year;%d\n\n", &victime.annee) != 1) {
         printf("Erreur de format : année introuvable\n");
         fclose(f);
         exit(2);
     }
-	
-	return victime;
 	fclose(f);
+	return victime;
+	
 }
 
 Victime creer_victime(){
@@ -25,9 +25,9 @@ Victime creer_victime(){
 	nouv.idVehicule = 0;
 	nouv.typeUtilisateur = 0;
 	nouv.gravite = 0;
-	nouv.naissance = 0
-	nouv.typeTrajet = 0
-	nouv.age = 0
+	nouv.naissance = 0;
+	nouv.typeTrajet = 0;
+	nouv.age = 0;
 }
 
 int verifint(){            
