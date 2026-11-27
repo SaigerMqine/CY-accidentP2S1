@@ -77,7 +77,7 @@ void compterVictime(ChainonAge *statAge, int genre, int typeUtilisateur){    //m
 int ajouterAgeVictime(ChainonAge * debut, Victime victime){
 //Verifier si age est un entier?
   
-  if(victime->age < 0 || victime->age > 116){
+  if(victime->age < 0 || victime->age > 130){
     printf("L'âge n'est pas valide);    
     return 0;
   }else if(*debut==NULL){
