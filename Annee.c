@@ -36,5 +36,13 @@ void afficherMenuAnnee(DonneesAnnee tab[]){
   while(annee!=0);
 }
 
+void executerModeAnnee(const char* nomFichier){
+DonneesAnnee tab[TAILLE];
+creationTableau(tab);
+if( chargerDonnees(nomFichier, tab) != -1){
+afficherMenuAnnee(tab);
+}
+}
+
 
 
