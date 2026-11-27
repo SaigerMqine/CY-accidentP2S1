@@ -88,6 +88,21 @@ void ajouterAgeVictime(ChainonAge ** debut, Victime victime){    //Double pointe
     compterVictime(nouveau, victime.typeUtilisateur, victime.genre);
     return;
   }else{
+    courant = *tete;
+    while (courant->suivant != NULL && courant->suivant->age <= victime.age) {
+        courant = courant->suivant;
+    }
+    if (courant->age == victime.age) {
+        compterVictime(courant, victime.typeUtilisateur, victime.genre);
+        return;
+    }else{
+      nouveau = creerChainonAge(victime.age);
+      nouveau->suivant = courant->suivant; 
+      courant->suivant = nouveau;            
+      compterVictime(nouv, victime.typeUtilisateur, victime.genre);
+    }
+  }
+}
     
       
 
