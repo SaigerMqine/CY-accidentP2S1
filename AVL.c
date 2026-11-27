@@ -1,69 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Vic{
-    int age;
-    int type;
-    struct Vic* suivant;
-}Vic;
-
-typedef Vic* pVic;
-
-typedef struct Vehicule{
-    int ID;
-    int tajet;
-    pVic victimes;
-    struct Vehicule* suivant;
-}Vehicule;
-
-typedef Vehicule* pVehicule;
-
-typedef struct Arbre{
-    int yearId;
-    int equilibre;
-    pVehiucle vehicules;
-    struct Arbre *fg;
-    struct Arbre *fd;
-}Arbre;
-
-typedef Arbre *pArbre;
-
-pArbre creerArbre(int a){
+pArbre creerArbre(Victime vic){
     pArbre n = malloc(sizeof(Arbre));
     if(n == NULL){
         exit(1);
     }
-    n->v = a;
+    n->yearId = 0; // calculé (vic.annee * 100000000) + vic.idCollision
+    n->vehicules = 0
     n->equilibre = 0;
     n->fg = NULL;
     n->fd = NULL;
     return n;
-}
-
-int hauteur(pArbre a){
-    if(a == NULL){
-        return 0;
-    }
-    int hg = hauteur(a->fg);
-    int hg = hauteur(a->fd);
-    if(hg > hd){
-        return 1 + hg;
-    }
-    else{
-        return 1 + hd;
-    }
-}
-
-int calcul_equilibre(pArbre a){
-    if(a == NULL){
-        return 0;
-    }
-    return hauteur(a->fd) - hauteur(a->fg);
-}
-
-void maj_equilibre(pArbre a){
-    if(a != NULL){
-        a->equilibre = calcul_equilibre(a);
 }
 
 pArbre RotationGauche(pArbre a){
@@ -128,4 +73,30 @@ pArbre DoubleRotationGauche(pArbre a){
     a->fd = RotationDroite(a->fd);
     a = RotationGauche(a);
     return a;
+}
+
+int hauteur(pArbre a){
+    if(a == NULL){
+        return 0;
+    }
+    int hg = hauteur(a->fg);
+    int hg = hauteur(a->fd);
+    if(hg > hd){
+        return 1 + hg;
+    }
+    else{
+        return 1 + hd;
+    }
+}
+
+int calcul_equilibre(pArbre a){
+    if(a == NULL){
+        return 0;
+    }
+    return hauteur(a->fd) - hauteur(a->fg);
+}
+
+void maj_equilibre(pArbre a){
+    if(a != NULL){
+        a->equilibre = calcul_equilibre(a);
 }
