@@ -8,7 +8,7 @@ Victime recup_ligne(char* nom_fichier){
 	Victime victime = creer_victime();
 
 	char ligne[512];
-	if(fgets(ligne, sizeof(ligne), ) == NULL){
+	if(fgets(ligne, sizeof(ligne), f) == NULL){
 		printf("Erreur: fichier vide\n");
 		
 		exit(10);
