@@ -22,3 +22,8 @@ Chainon *creerChainonAge(int age) {
   
   return nouveau;
 }
+
+
+
+
+
