@@ -25,18 +25,18 @@ void afficherMenuAnnee(DonneesAnnee tab[]){
       while (getchar() != '\n');
     }
     else{
-    if(annee>=2005 && annee<=2024){
-      int indice = annee - 2005;
-      printf("%d accidents\n", tab[indice].accidents);
-      printf("%d indemnes\n", tab[indice].indemnes);
-      printf("%d tues\n", tab[indice].tues);
-      printf("%d blesses graves\n", tab[indice].graves);
-      printf("%d blesses legers\n", tab[indice].legers);
-  }
-    else if(annee!=0){
+      if(annee>=2005 && annee<=2024){
+        int indice = annee - 2005;
+        printf("%d accidents\n", tab[indice].accidents);
+        printf("%d indemnes\n", tab[indice].indemnes);
+        printf("%d tues\n", tab[indice].tues);
+        printf("%d blesses graves\n", tab[indice].graves);
+        printf("%d blesses legers\n", tab[indice].legers);
+      }
+      else if(annee!=0){
       printf("Erreur : Saisir une annee entre (2005-2024).\n");
-  }
-  }
+      }
+    }
   }
   while(annee!=0);
 }
