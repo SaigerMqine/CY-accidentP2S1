@@ -93,7 +93,7 @@ pArbre insererAVL(pArbre a, Victime vic){
     if(temp->yearId < (vic.annee * 100000000) + vic.idCollision){
         temp->fd = insererAVL(temp->fd, vic);
     }
-    return a;
+    return reequilibrer(temp);
 }
 
 pArbre DoubleRotationDroite(pArbre a){
@@ -138,4 +138,28 @@ int calcul_equilibre(pArbre a){
 void maj_equilibre(pArbre a){
     if(a != NULL){
         a->equilibre = calcul_equilibre(a);
+}
+
+pArbre reequilibrer(pArbre a){
+    if(a == NULL){
+        return a;
+    }
+    maj_equilibre(a);
+    if(a->equilibre == -2){
+        if(calcul_equilibre(a->fg) > 0){
+            return DoubleRotationDroite(a);
+        }
+        else{
+            return RotationDroite(a);
+        }
+    }
+    if(a->equilibre == 2){
+        if(calcul_equilibre(a->fd) < 0){
+            return DoubleRotationGauche(a);
+        }
+        else{
+            return RotationGauche(a);
+        }
+    }
+    return a;
 }
