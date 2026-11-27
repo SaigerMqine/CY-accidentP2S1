@@ -1,28 +1,15 @@
-Victime recup_ligne(char* nom_fichier){
-    FILE *f = fopen(nom_fichier, "r");
-    if (f == NULL) {
-        printf("Erreur : Impossible d'ouvrir le fichier");
-        exit(1);
-    }
-	
-	Victime victime = creer_victime();
-
+int recup_ligne(FILE* f, Victime* victime){
 	char ligne[512];
 	if(fgets(ligne, sizeof(ligne), f) == NULL){
 		printf("Erreur: fichier vide\n");
-		
-		exit(10);
+		return 0;
 	}
-
-	while(fgets(ligne, sizeof(ligne), f) != NULL){
-
-		if(sscanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) == 9){
-			victime.age = victime.annee - victime.naissance;
-			fclose(f);
-			printf("Victime chargée avec succès");
-			return victime;
-		}
-	}	
+	if(sscanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) != 9){
+			return -1
+	}
+	victime.age = victime.annee - victime.naissance;
+	printf("Victime chargée avec succès");
+	return 1;
 }
 
 Victime creer_victime(){
