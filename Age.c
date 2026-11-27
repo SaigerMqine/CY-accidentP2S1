@@ -43,14 +43,35 @@ int categorieAge(int age){    //Bonus par tranche d'age
   }
 }
 
-void compterVictime(ChainonAge *cA, int genre, int typeUtilisateur){    //mets la victme dans la bonne cas (ex : femme piétonne)
+void compterVictime(ChainonAge *statAge, int genre, int typeUtilisateur){    //mets la victme dans la bonne cas (ex : femme piétonne)
   if( typeUtilisateur = 1){
     if(genre = 1){
-      ++cA->conducteur->homme;
-    }else if(genre = 2)
-      ++cA->conducteur->femme;
+      ++statAge->conducteur->homme;
+    }else if(genre = 2){
+      ++statAge->conducteur->femme;
     }else{
-      ++cA->conducteur->autre;
+      ++statAge->conducteur->autre;
+    }
+  }else if( typeUtilisateur = 2){
+    if(genre = 1){
+      ++statAge->passager->homme;
+    }else if(genre = 2){
+      ++statAge->passager->femme;
+    }else{
+      ++statAge->passager->autre;
+    }
+  }else{
+    if(genre = 1){
+      ++statAge->pieton->homme;
+    }else if(genre = 2){
+      ++statAge->pieton->femme;
+    }else{
+      ++statAge->pieton->autre;
+    }
+  }
+}
+
+
 
 
 int ajouterAgeVictime(ChainonAge * debut, Victime victime){
