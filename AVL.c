@@ -89,8 +89,8 @@ pArbre DoubleRotationGauche(pArbre a){
     if(a == NULL){
         return a;
     }
-    a->fd = RotationGauche(a->fd);
-    a = RotationDroite(a);
+    a->fd = RotationDroite(a->fd);
+    a = RotationGauche(a);
     return a;
 }
 
