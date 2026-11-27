@@ -43,5 +43,8 @@ int categorieAge(int age){    //Bonus par tranche d'age
 }
 
 
+int ajouterAgeVictime(Chainon nouveau
+
+
 
 
