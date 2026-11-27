@@ -5,17 +5,17 @@ typedef struct {
 }Genre;
 
 
-typedef struct Chainon{
+typedef struct Victime{
   int age;
   Genre conducteur;
   Genre passager;
   Genre pieton;
-  struct Chainon * suivant;
-}Chainon;
+  struct Victime * suivant;
+}Victime;
 
 
 
-Chainon *creerChainonAge(int age) {
+Victime *creerVictimeAge(int age) {
   Chainon *nouveau = malloc(sizeof(Chainon));
   if (nouveau == NULL) {
       printf("Erreur : allocation mémoire impossible (création chainon age)\n");
