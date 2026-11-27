@@ -41,6 +41,8 @@ pArbre RotationGauche(pArbre a){
     pArbre temp = a->fd;
     a->fd = temp->fg;
     temp->fg = a;
+    maj_equilibre(a);
+    maj_equilibre(temp);
     return temp;
 }
 
@@ -51,33 +53,47 @@ pArbre RotationDroite(pArbre a){
     pArbre temp = a->fg;
     a->fg = temp->fd;
     temp->fd = a;
+    maj_equilibre(a);
+    maj_equilibre(temp);
     return temp;
 }
 
-int insertABR(pArbre a, int e){
+void insererVictime(pVehicule v, Victime vic) {        //ajoute une victime a un vehicule
+    pVic nouv = creerVictime(vic);
+    nouv->suivant = v->victimes;
+    v->victimes = nouv;
+}
+
+void insererVehicule(pArbre a, Victime vic) {        //ajoute une un vehicule a un noeud
+    pVehicule nouv = creerVehicule(vic);
+    nouv->suivant = a->vehicules;
+    a->vehicules = nouv;
+}
+
+pArbre insererAVL(pArbre a, Victime vic){
     if(a == NULL){
-        return 0;
+        return creerArbre(vic);
     }
     pArbre temp = a;
-    if(temp->v == e){
-        printf("le noeud exite deja");
-        return 0;
-    }
-    if(e < temp->v){
-        if(temp->fg == NULL){
-            temp->fg = creerArbre(e);
-            return 1;
+    if(temp->yearId == (vic.annee * 100000000) + vic.idCollision){
+        pVehicule vtmp = temp->vehicules;
+        while(vtmp != NULL){
+            if(vtmp->ID == vic.idVehicule){
+                vtmp->victimes = insererVictime(vtmp->victimes, vic);
+                return a;
+            }
+            vtmp = vtmp->suivant;
         }
-        return(insertABR(temp->fg, e));
+        a->vehicules = insererVehicule(a, vic);
+        return a;
     }
-    if(e > temp->v){
-        if(temp->fd == NULL){
-            temp->fd = creerArbre(e);
-            return 1;
-        }
-        return(insertABR(temp->fd, e));
+    if(temp->yearId > (vic.annee * 100000000) + vic.idCollision){
+            temp->fg = insererAVL(temp->fg, vic);
     }
-    return 0;
+    if(temp->yearId < (vic.annee * 100000000) + vic.idCollision){
+        temp->fd = insererAVL(temp->fd, vic);
+    }
+    return a;
 }
 
 pArbre DoubleRotationDroite(pArbre a){
@@ -103,7 +119,7 @@ int hauteur(pArbre a){
         return 0;
     }
     int hg = hauteur(a->fg);
-    int hg = hauteur(a->fd);
+    int hd = hauteur(a->fd);
     if(hg > hd){
         return 1 + hg;
     }
