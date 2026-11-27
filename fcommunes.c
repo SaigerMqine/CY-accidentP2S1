@@ -8,15 +8,15 @@ Victime recup_ligne(char* nom_fichier){
 	Victime victime = creer_victime();
 
 	char ligne[512];
-	if(fgets(ligne sizeof(ligne), ) == NULL){
-		printf("Erreur: fichier vide\n);
-		fclose(f);
+	if(fgets(ligne, sizeof(ligne), ) == NULL){
+		printf("Erreur: fichier vide\n");
+		
 		exit(10);
 	}
 
 	while(fgets(ligne, sizeof(ligne), f) != NULL){
 
-		if(scanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) == 9){
+		if(sscanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) == 9){
 			victime.age = victime.annee - victime.naissance;
 			fclose(f);
 			printf("Victime chargée avec succès");
