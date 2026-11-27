@@ -1,5 +1,7 @@
 #include "annee.h"
-void creationTableau(DonneesAnnees tab[], int TAILLE){
+#include <stdio.h> 
+
+void creationTableau(DonneesAnnee tab[]){
   
   for(int i = 0; i<TAILLE; i++){
       tab[i].accidents = 0;
@@ -10,6 +12,8 @@ void creationTableau(DonneesAnnees tab[], int TAILLE){
   }
 }
 
+int chargerDonnees(const char* nomFichier, DonneesAnnee tab[]){
+}
 
 void afficherMenuAnnee(DonneesAnnee tab[]){
   int annee = 0;
