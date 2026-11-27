@@ -1,10 +1,33 @@
-pArbre creerArbre(Victime vic){
+pVic creerVictime(Victime vic) {        //crée une victime
+    pVic nouv = malloc(sizeof(Vic));
+    if(v == NULL){
+        exit(1);
+    }
+    nouv->age = vic.age;
+    nouv->type = vic.type;
+    nouv->suivant = NULL;
+    return nouv;
+}
+
+pVehicule creerVehicule(Victime vic) {        //crée un vehicule et rentre premiere victime
+    pVehicule nouv = malloc(sizeof(Vehicule));
+    if(v == NULL){
+        exit(1);
+    }
+    nouv->ID = vic.idVehicule;
+    nouv->trajet = vic.typeTrajet;
+    nouv->victimes = creerVictime(vic);
+    nouv->suivant = NULL;
+    return nouv;
+}
+
+pArbre creerArbre(Victime vic){         //crée un noeud et rentre premier vehicule
     pArbre n = malloc(sizeof(Arbre));
     if(n == NULL){
         exit(1);
     }
-    n->yearId = 0; // calculé (vic.annee * 100000000) + vic.idCollision
-    n->vehicules = 0
+    n->yearId = (vic.annee * 100000000) + vic.idCollision;
+    n->vehicules = creerVehicule(vic);
     n->equilibre = 0;
     n->fg = NULL;
     n->fd = NULL;
