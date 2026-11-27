@@ -18,7 +18,7 @@ int main(int argc, char *argv[]{
             printf("Erreur ouverture fichier\n");
             exit(1);
         }
-        Age(argv[2]);
+        executeAge(argv[2]);
     }
     else if(strcmp(argv[1], "CRASH_DATA") == 0){
         FILE *f = fopen ("cy_crash_tech_small_shuffled.csv", "r");
