@@ -74,13 +74,21 @@ void compterVictime(ChainonAge *statAge, int genre, int typeUtilisateur){    //m
 
 
 
-int ajouterAgeVictime(ChainonAge * debut, Victime victime){
+void ajouterAgeVictime(ChainonAge ** debut, Victime victime){    //Double pointeur car la tête de liste peut changer (ex : l'age de la victime est inférieur à celui des victimes précedentes)
 //Verifier si age est un entier?
-  
+  ChainonAge * courant = NULL;
+  ChainonAge * nouveau = NULL;
   if(victime->age < 0 || victime->age > 130){
     printf("L'âge n'est pas valide);    
-    return 0;
-  }else if(*debut==NULL){
+    return;
+  }else if(*debut == NULL|| victime.age < (*debut)->age) {
+    nouveau = creerChainonAge(victime.age);
+    nouveau->suivant = *debut;    
+    *debut = nouveau;               
+    compterVictime(nouveau, victime.typeUtilisateur, victime.genre);
+    return;
+  }else{
+    
       
 
     
