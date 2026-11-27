@@ -2,10 +2,11 @@
 #include <stdlib.h>
 
 typedef struct Arbre{
-    int v;
+    Victime v;
+    int yearId;
+    int equilibre;
     struct Arbre *fg;
     struct Arbre *fd;
-    int equilibre;
 }Arbre;
 
 typedef Arbre *pArbre;
@@ -37,11 +38,15 @@ int hauteur(pArbre a){
 }
 
 int calcul_equilibre(pArbre a){
-    
+    if(a == NULL){
+        return 0;
+    }
+    return hauteur(a->fd) - hauteur(a->fg);
 }
 
 void maj_equilibre(pArbre a){
-    
+    if(a != NULL){
+        a->equilibre = calcul_equilibre(a);
 }
 
 pArbre RotationGauche(pArbre a){
@@ -90,14 +95,6 @@ int insertABR(pArbre a, int e){
     return 0;
 }
 
-void parcoursPrefixe(pArbre a){
-    if(a != NULL){
-        printf("%d ", a->v);
-        parcoursPrefixe(a->fg);
-        parcoursPrefixe(a->fd);
-    }
-}
-
 pArbre DoubleRotationDroite(pArbre a){
     if(a == NULL || a->fg == NULL){
         return a;
@@ -114,24 +111,4 @@ pArbre DoubleRotationGauche(pArbre a){
     a->fd = RotationDroite(a->fd);
     a = RotationGauche(a);
     return a;
-}
-
-void parcoursLargeur(pArbre a) {
-    if (a == NULL) {
-        return;
-    }
-    pArbre file[1000];
-    int debut = 0;
-    int fin = 0;
-    file[fin++] = a;
-    while (debut < fin) {
-        pArbre courant = file[debut++];
-        printf("%d ", courant->v);
-        if (courant->fg != NULL) {
-            file[fin++] = courant->fg;
-        }
-        if (courant->fd != NULL) {
-            file[fin++] = courant->fd;
-        }
-    }
 }
