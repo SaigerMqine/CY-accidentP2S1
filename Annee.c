@@ -1,3 +1,4 @@
+#include "annee.h"
 void creationTableau(DonneesAnnees tab[], int TAILLE){
   
   for(int i = 0; i<TAILLE; i++){
