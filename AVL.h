@@ -1,14 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct Vic{
+    int age;
+    int type;
+    struct Vic* suivant;
+}Vic;
+
+typedef Vic* pVic;
+
+typedef struct Vehicule{
+    int ID;
+    int trajet;
+    pVic victimes;
+    struct Vehicule* suivant;
+}Vehicule;
+
+typedef Vehicule* pVehicule;
+
 typedef struct Arbre{
-    int v;
+    long yearId;
+    int equilibre;
+    pVehicule vehicules;
     struct Arbre *fg;
     struct Arbre *fd;
-    int equilibre;
 }Arbre;
 
 typedef Arbre *pArbre;
+
 
 pArbre creerArbre(int a);
 pArbre RotationGauche(pArbre a);
