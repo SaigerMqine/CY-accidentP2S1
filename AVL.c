@@ -22,6 +22,21 @@ pArbre creerArbre(int a){
     return n;
 }
 
+int hauteur(pArbre a){
+    if(a == NULL){
+        return 0;
+    }
+    int hg = hauteur(a->fg);
+    int hg = hauteur(a->fd);
+    if(hg > hd){
+        return 1 + hg;
+    }
+    else{
+        return 1 + hd;
+    }
+}
+
+
 pArbre RotationGauche(pArbre a){
     if(a == NULL || a->fd == NULL){
         return a;
