@@ -8,10 +8,7 @@ typedef struct{
   int legers;
 }DonneesAnnee;
 
-void creationTableau();
+void creationTableau(DonneesAnnee tab[]);
 
 
-
-
-
-
+void executerModeAnnee(const char* nomFichier);
