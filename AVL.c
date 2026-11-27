@@ -23,7 +23,7 @@ pArbre creerArbre(int a){
 }
 
 pArbre RotationGauche(pArbre a){
-    if(a == NULL){
+    if(a == NULL || a->fd == NULL){
         return a;
     }
     pArbre temp = a->fd;
@@ -33,7 +33,7 @@ pArbre RotationGauche(pArbre a){
 }
 
 pArbre RotationDroite(pArbre a){
-    if(a == NULL){
+    if(a == NULL || a->fg == NULL){
         return a;
     }
     pArbre temp = a->fg;
@@ -77,7 +77,7 @@ void parcoursPrefixe(pArbre a){
 }
 
 pArbre DoubleRotationDroite(pArbre a){
-    if(a == NULL){
+    if(a == NULL || a->fg == NULL){
         return a;
     }
     a->fg = RotationGauche(a->fg);
@@ -86,7 +86,7 @@ pArbre DoubleRotationDroite(pArbre a){
 }
 
 pArbre DoubleRotationGauche(pArbre a){
-    if(a == NULL){
+    if(a == NULL || a->fd == NULL){
         return a;
     }
     a->fd = RotationDroite(a->fd);
