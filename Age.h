@@ -5,17 +5,17 @@ typedef struct {
 }Genre;
 
 
-typedef struct Victime{
+typedef struct ChainonAge{
   int age;
   Genre conducteur;
   Genre passager;
   Genre pieton;
-  struct Victime * suivant;
-}Victime;
+  struct ChainonAge * suivant;
+}ChainonAge;
 
 
 
-Victime *creerVictimeAge(int age);
+ChainonAge *creerVictimeAge(int age);
 
 
 
