@@ -4,7 +4,7 @@ int recup_ligne(FILE* f, Victime* victime){
 		printf("Erreur: fichier vide\n");
 		return 0;
 	}
-	if(sscanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime.annee, &victime.idCollision, &victime.idVehicule, &victime.localisation, &victime.typeUtilisateur, &victime.gravite, &victime.genre, &victime.naissance, &victime.typeTrajet) != 9){
+	if(sscanf(ligne, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &victime->annee, &victime->idCollision, &victime->idVehicule, &victime->localisation, &victime->typeUtilisateur, &victime->gravite, &victime->genre, &victime->naissance, &victime->typeTrajet) != 9){
 			return -1;
 	}
 	victime->age = victime->annee - victime->naissance;
