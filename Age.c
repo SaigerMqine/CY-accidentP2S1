@@ -1,5 +1,5 @@
-Chainon *creerChainonAge(int age) {
-  Chainon *nouveau = malloc(sizeof(Chainon));
+ChainonAge *creerVictimeAge(int age) {
+  ChainonAge *nouveau = malloc(sizeof(ChainonAge));
   if (nouveau == NULL) {
       printf("Erreur : allocation mémoire impossible (création chainon age)\n");
       exit(1);
@@ -43,7 +43,14 @@ int categorieAge(int age){    //Bonus par tranche d'age
 }
 
 
-int ajouterAgeVictime(Chainon nouveau
+int ajouterAgeVictime(ChainonAge * debut, Victime victime){
+if (
+
+
+
+
+
+
 
 
 
