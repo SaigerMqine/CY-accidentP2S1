@@ -104,9 +104,14 @@ void ajouterAgeVictime(ChainonAge ** debut, Victime victime){    //Double pointe
 }
     
       
+afficherPyramideAge(ChainonAge *debut, int filtreType, int filtreGenre){
+}
 
+afficherPyramideAge(Chainon *debut, int filtreType, int filtreGenre){
+}
     
-
+executeAge(){
+}
 
 
 
