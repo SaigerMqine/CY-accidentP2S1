@@ -31,5 +31,6 @@ int main(int argc, char *argv[]{
     else{
         printf("Mode inconnu.    Réssayez avec "YEAR_DATA"; "AGE_DATA" ou "CRASH_DATA"\n");
     }
-
+    fclose(f);
+    return 0;
 }
