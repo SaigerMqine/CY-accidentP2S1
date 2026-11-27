@@ -1,4 +1,4 @@
-ChainonAge *creerVictimeAge(int age) {
+ChainonAge *creerChainonAge(int age) {
   ChainonAge *nouveau = malloc(sizeof(ChainonAge));
   if (nouveau == NULL) {
       printf("Erreur : allocation mémoire impossible (création chainon age)\n");
@@ -25,6 +25,7 @@ ChainonAge *creerVictimeAge(int age) {
 
 
 int categorieAge(int age){    //Bonus par tranche d'age
+  //Si age pas valide?
   if(age<13){
     return 1;     //Catégorie 1 = Enfance (0-12ans)
   }else if(age<18){
@@ -42,9 +43,26 @@ int categorieAge(int age){    //Bonus par tranche d'age
   }
 }
 
+void compterVictime(ChainonAge *cA, int genre, int typeUtilisateur){    //mets la victme dans la bonne cas (ex : femme piétonne)
+  if( typeUtilisateur = 1){
+    if(genre = 1){
+      ++cA->conducteur->homme;
+    }else if(genre = 2)
+      ++cA->conducteur->femme;
+    }else{
+      ++cA->conducteur->autre;
+
 
 int ajouterAgeVictime(ChainonAge * debut, Victime victime){
-if (
+//Verifier si age est un entier?
+  
+  if(victime->age < 0 || victime->age > 116){
+    printf("L'âge n'est pas valide);    
+    return 0;
+  }else if(*debut==NULL){
+      
+
+    
 
 
 
