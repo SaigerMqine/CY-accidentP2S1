@@ -36,6 +36,13 @@ int hauteur(pArbre a){
     }
 }
 
+int calcul_equilibre(pArbre a){
+    
+}
+
+void maj_equilibre(pArbre a){
+    
+}
 
 pArbre RotationGauche(pArbre a){
     if(a == NULL || a->fd == NULL){
